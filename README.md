@@ -6,7 +6,7 @@ A repository of *demos* and *experiments* with the Elixir to answer personal que
 
 - [reactive-microservices](reactive-microservices/README.md)
 
-> How Elixir can handle [reactive micro-services architecture](https://www.google.com/search?channel=fs&client=ubuntu&q=reactive+microservices) architecture ? This demo proves the usage of Elixir as a service handling coming and going to messages brokers (Kafka).
+> How Elixir can handle [reactive micro-services architecture](https://www.google.com/search?channel=fs&client=ubuntu&q=reactive+microservices) ? This demo proves the usage of Elixir as a service handling coming and going to messages brokers (Kafka).
 
 - [digits](digits/README.md)
 
