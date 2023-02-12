@@ -25,8 +25,8 @@ docker compose up
 ```
 
 ```bash
-docker exec broker kafka-topics --bootstrap-server broker:9092 --create --topic input
-docker exec broker kafka-topics --bootstrap-server broker:9092 --create --topic output
+docker exec kafka kafka-topics --bootstrap-server kafka:9092 --create --topic input
+docker exec kafka kafka-topics --bootstrap-server kafka:9092 --create --topic output
 ```
 
 ## Start the Python consumer

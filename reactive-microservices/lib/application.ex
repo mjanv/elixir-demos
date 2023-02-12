@@ -6,7 +6,7 @@ defmodule Pipelines.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      {Pipelines.Broadway, []}
+      {Pipelines.Microservices.Broadway, []}
     ]
 
     opts = [strategy: :one_for_one, name: Pipelines.Supervisor]
