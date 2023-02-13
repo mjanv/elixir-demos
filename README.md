@@ -18,4 +18,4 @@ A repository of *demos* and *experiments* with the Elixir to answer personal que
 
 - [blinker](blinker/README.md)
 
-> How to embed Elixir code on embedded devices ?
+> How to embed Elixir code on embedded devices ? This demo demonstrates how to blink a Led, while embedding a web app on a Raspberry Pi Zero.

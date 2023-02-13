@@ -1,0 +1,1 @@
+IO.inspect(A.get())
