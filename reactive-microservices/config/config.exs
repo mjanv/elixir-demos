@@ -7,3 +7,10 @@ config :brod,
       auto_start_producers: true
     ]
   ]
+
+config :pipelines, Pipelines.PromEx,
+  disabled: false,
+  manual_metrics_start_delay: :no_delay,
+  drop_metrics_groups: [],
+  grafana: :disabled,
+  metrics_server: [port: 4000]

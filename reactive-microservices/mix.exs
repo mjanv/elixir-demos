@@ -22,7 +22,9 @@ defmodule Pipelines.MixProject do
     [
       {:broadway, "~> 1.0"},
       {:broadway_kafka, "~> 0.3"},
-      {:brod, "~> 3.16"}
+      {:brod, "~> 3.16"},
+      {:jason, "~> 1.4"},
+      {:prom_ex, "~> 1.7"}
     ]
   end
 end

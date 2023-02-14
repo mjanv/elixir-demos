@@ -1,4 +1,5 @@
 import sys
+import json
 from kafka import KafkaProducer
 
 producer = KafkaProducer(bootstrap_servers="localhost:9092")
@@ -7,7 +8,7 @@ n = int(sys.argv[1])
 
 print(f"Producing {n} messages to topic {topic}.")
 for i in range(n):
-    producer.send(topic, f"{i}".encode())
+    producer.send(topic, json.dumps({"order": i}).encode("utf-8"))
 
 print("Flushing the messages.")
 producer.flush()

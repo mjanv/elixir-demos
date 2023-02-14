@@ -1,3 +1,5 @@
+import json
+
 from kafka import KafkaConsumer
 
 consumer = KafkaConsumer(
@@ -8,5 +10,4 @@ consumer = KafkaConsumer(
 )
 
 for message in consumer:
-    message = message.value
-    print("{}".format(message))
+    print(json.loads(message.value))

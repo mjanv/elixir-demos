@@ -20,7 +20,8 @@ defmodule Pipelines.Microservices.Broadway do
              group_id: "group_1",
              topics: @inputs
            ]},
-        concurrency: @concurrency
+        concurrency: @concurrency,
+        # transformer: {__MODULE__, :transform, []}
       ],
       processors: [default: [concurrency: @concurrency]],
       batchers: [
@@ -33,6 +34,13 @@ defmodule Pipelines.Microservices.Broadway do
     )
   end
 
+  # def transform(event, _opts) do
+  #   %Message{
+  #     data: event,
+  #     acknowledger: {__MODULE__, :ack_id, :ack_data}
+  #   }
+  # end
+
   @impl true
   def handle_message(:default, message, _context) do
     Message.update_data(message, &handle(&1))
@@ -40,7 +48,9 @@ defmodule Pipelines.Microservices.Broadway do
 
   @impl true
   def handle_batch(:default, messages, _batch_info, _context) do
-    Logger.info("Got batch of length #{length(messages)} from position #{hd(messages).data}")
+    Logger.info(
+      "Got batch of length #{length(messages)} from position #{inspect(hd(messages).data)}"
+    )
 
     Enum.each(messages, fn message -> batch(message.data) end)
 
@@ -48,10 +58,10 @@ defmodule Pipelines.Microservices.Broadway do
   end
 
   defp handle(data) do
-    String.to_integer(data)
+    Jason.decode!(data)
   end
 
   defp batch(data) do
-    :brod.produce(:kafka_client, @output, 0, _key = "", "#{data}")
+    :brod.produce(:kafka_client, @output, 0, _key = "", Jason.encode!(data))
   end
 end
